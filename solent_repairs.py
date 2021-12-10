@@ -21,7 +21,7 @@ while loop:
     show_menu()
     option = input("What would you like to do: ?")
 
-    if option == 1:
+    if option == '1':
         print("option 1 has been selected")
 
         # Create 3 lists to store data inputted by shop staff
@@ -36,26 +36,26 @@ while loop:
             fault_description = input("Fault description: ")
             return customer_name, item, fault_description
 
-    elif option == 2:
+    elif option == '2':
         print("option 2 has been selected")
 
-    elif option == 3:
+    elif option == '3':
         print("option 3 has been selected")
 
-    elif option == 4:
+    elif option == '4':
         print("option 4 has been selected")
 
-    elif option == 5:
+    elif option == '5':
         print("option 5 has been selected")
 
-    elif option == 6:
+    elif option == '6':
         print("option 5 has been selected")
 
-    elif option == 7:
+    elif option =='7':
         print("option 7 has been selected")
         loop = False  # This will make the while loop to end as not value of loop is set to False
     else:
-        print("Wrong option selection. Enter any key to try again..")
+        print("Wrong option selected! Please choose a valid option!")
 
 # Create 3 lists to store data inputted by shop staff
 customers = []
