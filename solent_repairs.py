@@ -18,26 +18,28 @@ def show_menu():
 loop = True
 
 while loop:
+    customers = []
+
     show_menu()
     option = input("What would you like to do: ?")
 
     if option == '1':
         print("option 1 has been selected")
 
-        # Create 3 lists to store data inputted by shop staff
-        customers = []
-        items = []
-        fault = []
+        print("Please enter Customer details!")
+        customer_name = input("Customer name: ")
+        item = input("Item: ")
+        fault_description = input("Fault description: ")
 
+        customers.append(customer_name)
+        customers.append(item)
+        customers.append(fault_description)
 
-        def booking():
-            customer_name = input("Customer name: ")
-            item = input("Item: ")
-            fault_description = input("Fault description: ")
-            return customer_name, item, fault_description
+        print(customers)
 
     elif option == '2':
         print("option 2 has been selected")
+
 
     elif option == '3':
         print("option 3 has been selected")
@@ -51,32 +53,8 @@ while loop:
     elif option == '6':
         print("option 5 has been selected")
 
-    elif option =='7':
+    elif option == '7':
         print("option 7 has been selected")
         loop = False  # This will make the while loop to end as not value of loop is set to False
     else:
         print("Wrong option selected! Please choose a valid option!")
-
-# Create 3 lists to store data inputted by shop staff
-customers = []
-items = []
-fault = []
-
-
-def booking():
-    customer_name = input("Customer name: ")
-    item = input("Item: ")
-    fault_description = input("Fault description: ")
-    return customer_name, item, fault_description
-
-# Display all items booked for repair
-
-# search for a specific item sent in for repair by the customer
-
-# display all items booked for repair, sorted by customer name
-
-# search for an item by customer name
-
-# The member of staff must be able to delete a specific item
-
-# “answer enquiries” functionality
