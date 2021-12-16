@@ -4,15 +4,7 @@ print("***********************")
 print("Solent Computer Repairs")
 print("***********************")
 
-
-def show_menu():
-    print("[1] Book item")
-    print("[2] search for a specific item by the customer")
-    print("[3] display all items booked for repair, sorted by customer name")
-    print("[4] search for an item by customer name")
-    print("[5] delete a specific item")
-    print("[6] answer enquiries")
-    print("[7] exit")
+customers = []
 
 
 def booking():
@@ -25,14 +17,31 @@ def booking():
     customers.append(customer_list)
 
     print(customers)
+    return customers
+
+
+def search_booking():
+    customer = str(input("Which customer would you like to search for: ?"))
+    if customer in customers:
+        print(customer)
+
+
+def show_menu():
+    print("[1] Book item")
+    print("[2] search for a specific item by the customer")
+    print("[3] display all items booked for repair, sorted by customer name")
+    print("[4] search for an item by customer name")
+    print("[5] delete a specific item")
+    print("[6] answer enquiries")
+    print("[7] exit")
+
+    return option
 
 
 loop = True
 
 while loop:
-    customers = []
 
-    show_menu()
     option = input("\nWhat would you like to do: ?")
 
     if option == '1':
@@ -42,7 +51,8 @@ while loop:
 
     elif option == '2':
         print("\noption 2 has been selected")
-        print(customers)
+        search_booking()
+
     elif option == '3':
         print("\noption 3 has been selected")
 
@@ -77,7 +87,14 @@ while loop:
         print(queue)
 
     elif option == '7':
-        print("\noption 7 has been selected")
+        print("\noption 7 has been selected. Good bye!")
         loop = False  # This will make the while loop to end as not value of loop is set to False
     else:
         print("\nWrong option selected! Please choose a valid option!")
+
+
+def run():
+    show_menu()
+
+
+run()
