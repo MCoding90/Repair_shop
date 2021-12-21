@@ -8,7 +8,7 @@ customers = []
 
 
 def booking():
-    print("Please enter Customer details!")
+    print("\nPlease enter Customer details!")
     customer_name = input("Customer name: ")
     item = input("Item: ")
     fault_description = input("Fault description: ")
@@ -26,6 +26,38 @@ def search_booking():
         print(customer)
 
 
+def insertion_sort():
+    global i
+    for index in range(1, len(customers)):
+        value = customers[index]
+        i = index - 1
+        while i >= 0:
+            if value < customers[i]:
+                customers[i + 1] = customers[i]
+                customers[i] = value
+                i = i - 1
+            else:
+                break
+    print(customers)
+
+
+def enquiries():
+    queue = ['My computer is running slow – what can I do about it?',
+             'Which web browser would you recommend, and why?',
+             'Can you recommend the PC build for gamer?',
+             'Why there is no audio output?']
+
+    # Removing elements from the queue
+    print("\nEnquiries answered")
+    print(queue.pop(0))
+    print(queue.pop(0))
+    print(queue.pop(0))
+    print(queue.pop(0))
+
+    print("\nAll enquiries answered")
+    print(queue)
+
+
 def show_menu():
     print("[1] Book item")
     print("[2] search for a specific item by the customer")
@@ -35,14 +67,14 @@ def show_menu():
     print("[6] answer enquiries")
     print("[7] exit")
 
-    return option
+    return input("\nWhat would you like to do: ?")
 
 
 loop = True
 
 while loop:
 
-    option = input("\nWhat would you like to do: ?")
+    option = show_menu()
 
     if option == '1':
         print("\noption 1 has been selected")
@@ -55,6 +87,7 @@ while loop:
 
     elif option == '3':
         print("\noption 3 has been selected")
+        insertion_sort()
 
     elif option == '4':
         print("\noption 4 has been selected")
@@ -71,20 +104,7 @@ while loop:
 
     elif option == '6':
         print("\noption 6 has been selected")
-        queue = ['My computer is running slow – what can I do about it?',
-                 'Which web browser would you recommend, and why?',
-                 'Can you recommend the PC build for gamer?',
-                 'Why there is no audio output?']
-
-        # Removing elements from the queue
-        print("\nEnquiries answered")
-        print(queue.pop(0))
-        print(queue.pop(0))
-        print(queue.pop(0))
-        print(queue.pop(0))
-
-        print("\nAll enquiries answered")
-        print(queue)
+        enquiries()
 
     elif option == '7':
         print("\noption 7 has been selected. Good bye!")
