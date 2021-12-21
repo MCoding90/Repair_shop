@@ -26,7 +26,7 @@ def search_booking():
         print(customer)
 
 
-def insertion_sort():
+def insertion_sort(customers):
     global i
     for index in range(1, len(customers)):
         value = customers[index]
@@ -39,6 +39,40 @@ def insertion_sort():
             else:
                 break
     print(customers)
+
+
+def merge_sort(customers):
+    global i
+    size = len(customers)
+    if len(customers) > 1:
+        mid = size // 2
+        left = customers[:mid]
+        right = customers[mid:]  # Recursive call on each half
+        merge_sort(left)
+        merge_sort(right)
+        # variables for traversing the left and right half
+        i = 0
+        j = 0
+        # variable for the main list
+        k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                # The value from the left half has been used
+                customers[k] = left[i]  # Move the iterator forward
+                i += 1
+            else:
+                customers[k] = right[j]
+                j += 1
+                k += 1
+        # For all the remaining values
+        while i < len(left):
+            customers[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            customers[k] = right[j]
+            j += 1
+            k += 1
 
 
 def enquiries():
@@ -87,20 +121,21 @@ while loop:
 
     elif option == '3':
         print("\noption 3 has been selected")
-        insertion_sort()
+        insertion_sort(customers)
 
     elif option == '4':
         print("\noption 4 has been selected")
+        merge_sort(customers)
 
     elif option == '5':
         print("\noption 5 has been selected")
 
         print("\nEnter id to delete a booking")
-        input1 = input()
+        item = input()
         for i in customers[:]:
-            if i[3] == input1: 2
-            customers.remove(i)
-            print(customers[:])
+            if i[2] == item:
+                customers.remove(i)
+                print(customers[:])
 
     elif option == '6':
         print("\noption 6 has been selected")
