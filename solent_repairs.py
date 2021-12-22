@@ -12,8 +12,9 @@ def booking():
     customer_name = input("Customer name: ")
     item = input("Item: ")
     fault_description = input("Fault description: ")
+    id_num = input("ID: ")
 
-    customer_list = [customer_name, item, fault_description]
+    customer_list = [customer_name, item, fault_description, id_num]
     customers.append(customer_list)
 
     print(customers)
@@ -26,8 +27,7 @@ def search_booking():
         print(customer)
 
 
-def insertion_sort(customers):
-    global i
+def insertion_sort():
     for index in range(1, len(customers)):
         value = customers[index]
         i = index - 1
@@ -41,8 +41,7 @@ def insertion_sort(customers):
     print(customers)
 
 
-def merge_sort(customers):
-    global i
+def merge_sort():
     size = len(customers)
     if len(customers) > 1:
         mid = size // 2
@@ -63,7 +62,7 @@ def merge_sort(customers):
             else:
                 customers[k] = right[j]
                 j += 1
-                k += 1
+            k += 1
         # For all the remaining values
         while i < len(left):
             customers[k] = left[i]
@@ -73,6 +72,18 @@ def merge_sort(customers):
             customers[k] = right[j]
             j += 1
             k += 1
+
+
+def delete_repair():
+    items = input("Enter the item you want to delete: ")
+    print(customers)
+    for data in customers:
+        if items == customers[0][1]:
+            customers.remove(data)
+            print("This repair has been recorded")
+        else:
+            print("This item is not in the list")
+        return customers
 
 
 def enquiries():
@@ -121,21 +132,15 @@ while loop:
 
     elif option == '3':
         print("\noption 3 has been selected")
-        insertion_sort(customers)
+        insertion_sort()
 
     elif option == '4':
         print("\noption 4 has been selected")
-        merge_sort(customers)
+        merge_sort()
 
     elif option == '5':
         print("\noption 5 has been selected")
-
-        print("\nEnter id to delete a booking")
-        item = input()
-        for i in customers[:]:
-            if i[2] == item:
-                customers.remove(i)
-                print(customers[:])
+        delete_repair()
 
     elif option == '6':
         print("\noption 6 has been selected")
