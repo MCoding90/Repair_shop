@@ -4,7 +4,9 @@ print("***********************")
 print("Solent Computer Repairs")
 print("***********************")
 
-customers = []
+customers = [["John", "notebook", "screen"], ["William", "processor", "high usage"],
+             ["Catherine", 'monitor', 'no output'], ["Bridget", 'mouse', 'wireless connection'],
+             ["Jim", 'gpu', 'directx'], ["Maciej", 'phone', 'screen']]
 
 
 def booking():
@@ -12,9 +14,8 @@ def booking():
     customer_name = input("Customer name: ")
     item = input("Item: ")
     fault_description = input("Fault description: ")
-    id_num = input("ID: ")
 
-    customer_list = [customer_name, item, fault_description, id_num]
+    customer_list = [customer_name, item, fault_description,]
     customers.append(customer_list)
 
     print(customers)
@@ -23,8 +24,9 @@ def booking():
 
 def search_booking():
     customer = str(input("Which customer would you like to search for: ?"))
-    if customer in customers:
+    if customer in customers[0]:
         print(customer)
+        return customers
 
 
 def insertion_sort():
@@ -41,37 +43,35 @@ def insertion_sort():
     print(customers)
 
 
-def merge_sort():
-    size = len(customers)
-    if len(customers) > 1:
-        mid = size // 2
-        left = customers[:mid]
-        right = customers[mid:]  # Recursive call on each half
-        merge_sort(left)
-        merge_sort(right)
-        # variables for traversing the left and right half
-        i = 0
-        j = 0
-        # variable for the main list
-        k = 0
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                # The value from the left half has been used
-                customers[k] = left[i]  # Move the iterator forward
-                i += 1
-            else:
-                customers[k] = right[j]
-                j += 1
-            k += 1
-        # For all the remaining values
-        while i < len(left):
-            customers[k] = left[i]
-            i += 1
-            k += 1
-        while j < len(right):
-            customers[k] = right[j]
-            j += 1
-            k += 1
+def merge_sort(customers):
+    if len(customers) <= 1:
+        return customers
+    # Find the middle point and divide it
+    middle = len(customers) // 2
+    left_list = customers[:middle]
+    right_list = customers[middle:]
+
+    left_list = merge_sort(left_list)
+    right_list = merge_sort(right_list)
+    return list(merge(left_list, right_list))
+
+
+# Merge the sorted halves
+
+def merge(left_half, right_half):
+    listm = []
+    while len(left_half) != 0 and len(right_half) != 0:
+        if left_half[0][1] < right_half[0][1]:
+            listm.append(left_half[0])
+            left_half.remove(left_half[0])
+        else:
+            listm.append(right_half[0])
+            right_half.remove(right_half[0])
+    if len(left_half) == 0:
+        listm = listm + right_half
+    else:
+        listm = listm + left_half
+    return listm
 
 
 def delete_repair():
@@ -136,7 +136,7 @@ while loop:
 
     elif option == '4':
         print("\noption 4 has been selected")
-        merge_sort()
+        print(merge_sort(customers))
 
     elif option == '5':
         print("\noption 5 has been selected")
