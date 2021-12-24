@@ -4,9 +4,19 @@ print("***********************")
 print("Solent Computer Repairs")
 print("***********************")
 
-customers = [["John", "notebook", "screen"], ["William", "processor", "high usage"],
-             ["Catherine", 'monitor', 'no output'], ["Bridget", 'mouse', 'wireless connection'],
-             ["Jim", 'gpu', 'directx'], ["Maciej", 'phone', 'screen']]
+customers = []
+
+
+def show_menu():
+    print("[1] Book item")
+    print("[2] Search for a specific item by the customer")
+    print("[3] Display all items booked for repair, sorted by customer name")
+    print("[4] Search for an item by customer name")
+    print("[5] Delete a specific item")
+    print("[6] Answer enquiries")
+    print("[7] Exit")
+
+    return input("\nWhat would you like to do: ?")
 
 
 def booking():
@@ -15,7 +25,7 @@ def booking():
     item = input("Item: ")
     fault_description = input("Fault description: ")
 
-    customer_list = [customer_name, item, fault_description,]
+    customer_list = [customer_name, item, fault_description]
     customers.append(customer_list)
 
     print(customers)
@@ -59,19 +69,19 @@ def merge_sort(customers):
 # Merge the sorted halves
 
 def merge(left_half, right_half):
-    listm = []
+    lstm = []
     while len(left_half) != 0 and len(right_half) != 0:
         if left_half[0][1] < right_half[0][1]:
-            listm.append(left_half[0])
+            lstm.append(left_half[0])
             left_half.remove(left_half[0])
         else:
-            listm.append(right_half[0])
+            lstm.append(right_half[0])
             right_half.remove(right_half[0])
     if len(left_half) == 0:
-        listm = listm + right_half
+        lstm = lstm + right_half
     else:
-        listm = listm + left_half
-    return listm
+        lstm = lstm + left_half
+    return lstm
 
 
 def delete_repair():
@@ -103,19 +113,7 @@ def enquiries():
     print(queue)
 
 
-def show_menu():
-    print("[1] Book item")
-    print("[2] search for a specific item by the customer")
-    print("[3] display all items booked for repair, sorted by customer name")
-    print("[4] search for an item by customer name")
-    print("[5] delete a specific item")
-    print("[6] answer enquiries")
-    print("[7] exit")
-
-    return input("\nWhat would you like to do: ?")
-
-
-loop = True
+loop = 1
 
 while loop:
 
@@ -123,7 +121,7 @@ while loop:
 
     if option == '1':
         print("\noption 1 has been selected")
-        booking()
+        (booking())
         print("\nWould you like to book another?:")
 
     elif option == '2':
@@ -147,8 +145,8 @@ while loop:
         enquiries()
 
     elif option == '7':
-        print("\noption 7 has been selected. Good bye!")
-        loop = False  # This will make the while loop to end as not value of loop is set to False
+        print("\nGood bye!")
+        loop = 0  # This will make the while loop to end as not value of loop is set to False
     else:
         print("\nWrong option selected! Please choose a valid option!")
 
